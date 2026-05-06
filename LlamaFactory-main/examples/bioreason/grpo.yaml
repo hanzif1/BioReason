@@ -1,0 +1,26 @@
+### model
+# 指向你刚刚合并出来的崭新模型
+model_name_or_path: models/Qwen2.5-VL-7B-BioReason-SFT
+stage: grpo
+finetuning_type: lora
+template: qwen2_vl
+
+### dataset
+dataset: bioreason_grpo_train
+# image_resolution: 512
+
+### GRPO specific settings
+reward_model_type: rule_based
+# reward_funcs: 
+#   - accuracy  # 答案对错奖励
+#   - format    # <think></think><answer></answer> 格式规范奖励
+
+### training
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+# RL 阶段学习率必须极小，防止模型崩溃
+learning_rate: 5.0e-6
+num_train_epochs: 1
+max_new_tokens: 512
+output_dir: saves/bioreason/grpo/checkpoint-final
+fp16: true
