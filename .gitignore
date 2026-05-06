@@ -1,0 +1,48 @@
+# ==========================================
+# 1. 根目录 (A_bio) 级别的忽略规则
+# ==========================================
+# 虚拟环境与本地软件
+miniforge3/
+Miniforge3-Linux-x86_64.sh
+migration_tools/
+
+# 外部仓库 (假设你不想把庞大的原始项目打包进去)
+biocap-main/
+bioclip-2-main/
+
+# 本地存储与备份
+storage/
+bak/
+models/
+
+# ==========================================
+# 2. LlamaFactory-main 级别的忽略规则
+# ==========================================
+# 绝对禁止上传的微调权重
+LlamaFactory-main/saves/
+
+# 巨大的训练与推理数据
+LlamaFactory-main/data/*.json
+!LlamaFactory-main/data/dataset_info.json
+# (允许上传 sample_ 开头的小样本数据)
+!LlamaFactory-main/data/sample_*.json
+LlamaFactory-main/A_out_json/
+
+# 日志文件
+*.log
+LlamaFactory-main/train.log
+LlamaFactory-main/debug_train.log
+
+# ==========================================
+# 3. Python 杂项与系统缓存
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.DS_Store.ide-data/
+.vscode-server/
+.ide-data/
+.vscode/
+.trae-server/
+.lingma/
