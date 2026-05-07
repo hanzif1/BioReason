@@ -75,6 +75,7 @@ class DatasetFromFile(Dataset):
         self.data = pd.read_csv(label_filepath).fillna('')
         column_mapping = {
             'FILE_NAME': 'filepath',  # 对应你 labels.csv 中的第一列
+            'file_name': 'filepath',  # 对应你 labels.csv 中的第一列
             'CATEGORY': 'class',       # 对应你 labels.csv 中的第二列
             'cls': 'class'             # 兼容你之前的 CameraTrap 数据集
         }

@@ -11,7 +11,7 @@ if 'HF_HUB_ENABLE_HF_TRANSFER' in os.environ:
 # --- 3. 设置日志 ---
 logging.set_verbosity_info()
 
-# --- 4. 配置参数 ---
+# --- 4. 配置参数 ---zezzzzzz
 # 数据集 ID
 repo_id = "imageomics/IDLE-OO-Camera-Traps"
 # 本地存储路径

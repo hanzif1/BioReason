@@ -1,0 +1,26 @@
+# ========================
+# BioReason .gitignore
+# ========================
+
+# 1. 忽略运行输出和日志
+A_out_json/
+A_out.txt
+*.log
+
+# 2. 忽略庞大的数据集 (但允许上传示例数据)
+data/*
+!data/sample_*
+!data/README.md
+
+# 3. 忽略 Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# 4. 忽略 IDE 和本地环境
+.ide-data/
+.vscode-server/
+.vscode/
+.trae-server/
+.lingma/
