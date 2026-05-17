@@ -18,36 +18,42 @@ MODEL_TYPE="hf-hub:imageomics/bioclip-2"
 PRETRAINED=False
 # BASE_DIR="/data2/datasets/your_actual_data_folder" 
 
+
+echo "=========================================================================================="
+echo "STARTING GROUP: data1 (CameraTrap)"
+echo "=========================================================================================="
+
 TASK_TYPE="all"
 TEXT_TYPE="taxon_com"
 
-# DATA_ROOTS=(
-#     "${TEST_SET_DIR}/CameraTrap/data/test/"
-#     "${TEST_SET_DIR}/CameraTrap/data/test/"
-#     "${TEST_SET_DIR}/CameraTrap/data/test/"
-#     "${TEST_SET_DIR}/CameraTrap/data/test/"
-#     "${TEST_SET_DIR}/CameraTrap/data/test/"
-# )
-# LABEL_FILES=(
-#     "${TEST_SET_DIR}/CameraTrap/desert-lion-balanced.csv"
-#     "${TEST_SET_DIR}/CameraTrap/ENA24-balanced.csv"
-#     "${TEST_SET_DIR}/CameraTrap/island-balanced.csv"
-#     "${TEST_SET_DIR}/CameraTrap/orinoquia-balanced.csv"
-#     "${TEST_SET_DIR}/CameraTrap/ohio-small-animals-balanced.csv"-
-# )
+DATA_ROOTS=(
+    "${TEST_SET_DIR}/CameraTrap/data/test/"
+    "${TEST_SET_DIR}/CameraTrap/data/test/"
+    "${TEST_SET_DIR}/CameraTrap/data/test/"
+    "${TEST_SET_DIR}/CameraTrap/data/test/"
+    "${TEST_SET_DIR}/CameraTrap/data/test/"
+)
+LABEL_FILES=(
+    "${TEST_SET_DIR}/CameraTrap/desert-lion-balanced.csv"
+    "${TEST_SET_DIR}/CameraTrap/ENA24-balanced.csv"
+    "${TEST_SET_DIR}/CameraTrap/island-balanced.csv"
+    "${TEST_SET_DIR}/CameraTrap/orinoquia-balanced.csv"
+    "${TEST_SET_DIR}/CameraTrap/ohio-small-animals-balanced.csv"
+)
 
-# for i in "${!DATA_ROOTS[@]}"; do
-#     DATA_ROOT=${DATA_ROOTS[$i]}
-#     LABEL_FILE=${LABEL_FILES[$i]}
+for i in "${!DATA_ROOTS[@]}"; do
+    DATA_ROOT=${DATA_ROOTS[$i]}
+    LABEL_FILE=${LABEL_FILES[$i]}
 
-#     python -m src.evaluation.zero_shot_iid \
-#             --model $MODEL_TYPE \
-#             --batch-size 256 \
-#             --data_root $DATA_ROOT \
-#             --pretrained $PRETRAINED \
-#             --label_filename $LABEL_FILE \
-#             --log $LOG_FILEPATH \
-#             --text_type $TEXT_TYPE \
+    python -m src.evaluation.zero_shot_iid \
+            --model $MODEL_TYPE \
+            --batch-size 256 \
+            --data_root $DATA_ROOT \
+            --pretrained $PRETRAINED \
+            --label_filename $LABEL_FILE \
+            --log $LOG_FILEPATH \
+            --text_type $TEXT_TYPE \
+            --output_group "data1"\
 
 #     python -m src.evaluation.few_shot \
 #             --model $MODEL_TYPE \
@@ -60,7 +66,11 @@ TEXT_TYPE="taxon_com"
 #             --nfold 5 \
 #             --kshot_list 1 5 \
 
-# done
+done
+
+echo "=========================================================================================="
+echo "STARTING GROUP: data2 (OpenML)"
+echo "=========================================================================================="
 
 TEXT_TYPE="asis"
 OPENML_BASE="/home/maviuserwq/.cache/openml/org/openml/www/datasets"
@@ -98,21 +108,24 @@ for i in "${!DATA_ROOTS[@]}"; do
             --label_filename $LABEL_FILE \
             --log $LOG_FILEPATH \
             --text_type $TEXT_TYPE \
+            --output_group "data2"\
 
-    python -m src.evaluation.few_shot \
-            --model $MODEL_TYPE \
-            --batch-size 256 \
-            --data_root $DATA_ROOT \
-            --pretrained $PRETRAINED \
-            --label_filename $LABEL_FILE \
-            --log $LOG_FILEPATH \
-            --task_type $TASK_TYPE \
-            --nfold 5 \
-            --kshot_list 1 5 \
+#     python -m src.evaluation.few_shot \
+#             --model $MODEL_TYPE \
+#             --batch-size 256 \
+#             --data_root $DATA_ROOT \
+#             --pretrained $PRETRAINED \
+#             --label_filename $LABEL_FILE \
+#             --log $LOG_FILEPATH \
+#             --task_type $TASK_TYPE \
+#             --nfold 5 \
+#             --kshot_list 1 5 \
 
 done
 
-
+# echo "=========================================================================================="
+# echo "STARTING GROUP: data3 (Rare Species)"
+# echo "=========================================================================================="
 # TEXT_TYPE="taxon_com"
 # DATA_ROOT="${TEST_SET_DIR}/rare-species/"
 # LABEL_FILE="${TEST_SET_DIR}/rare-species/metadata.csv"
@@ -125,6 +138,7 @@ done
 #         --label_filename $LABEL_FILE \
 #         --log $LOG_FILEPATH \
 #         --text_type $TEXT_TYPE \
+#         --output_group "data3"\
 
 # python -m src.evaluation.few_shot \
 #         --model $MODEL_TYPE \
