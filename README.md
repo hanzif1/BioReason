@@ -74,18 +74,4 @@ Our BioReason framework demonstrates significant improvements over baseline mode
 | Baseline | 58.8 | 6.1 | 34.9 |
 | **BioReason (Ours)** | **53.67** | **25.93** | **38.97** |
 
-(Please refer to the paper for the full comprehensive results across all 10 datasets, including detailed ablation studies.)
-## 📝 CitationIf you find this code or our paper useful for your research, please consider citing:
 
-```bibtex
-@article{duan2026bioreason,
-  title={BioReason: Retrieve-Then-Reason MLLMs for Interpretable Fine-Grained Species Classification},
-  author={Duan, Yicheng and Wan, Quan and Zhu, Xingyu and Zhang, Yifan and Wang, Ganlin and Dang, Jisheng and Wang, Jiawei and Wang, Bimei and Tian, Qi and Chua, Tat-Seng},
-  journal={ACM Transactions on Information Systems},
-  year={2026}
-}
-```
-
-## 📧 ContactFor any questions regarding the code or paper, please contact:
-* `Jisheng Dang: dangjisheng@lzu.edu.cn`
-* `Jiawei Wang: jiaweiwang@nus.edu.sg`
